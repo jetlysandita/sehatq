@@ -1,0 +1,15 @@
+.container{
+  display:flex;
+  position:fixed;
+  height: 50px;
+  bottom: 1px;
+  background-color: white;
+  left: 0;
+  right: 0;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid black;
+  span{
+    padding: 10px 20px;
+  }
+}
