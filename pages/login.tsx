@@ -1,7 +1,8 @@
 import CustomLogin from '../src/components/login'
 import { useRouter } from 'next/router'
 import Layout from '../src/layout/general'
-export default function Login() {
+import { GetServerSideProps } from 'next'
+export default function Login(props) {
   const router = useRouter()
   const goToHome = () => {
     router.push('/', undefined, { shallow: true })
@@ -9,6 +10,8 @@ export default function Login() {
   return (
     <Layout>
       <CustomLogin
+        googleClientId={props.googleClientid}
+        facebookClientId={props.facebookClientId}
         onSubmit={(data) => {
           localStorage.token = 'normal'
           console.log(data)
@@ -25,4 +28,13 @@ export default function Login() {
           goToHome()
         }} />
     </Layout>)
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  return {
+    props: {
+      googleClientId: process.env.GOOGLE_CLIENT_ID,
+      facebookClientId: process.env.FACEBOOK_CLIENT_ID
+    },
+  }
 }

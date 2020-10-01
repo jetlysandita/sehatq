@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { GoogleLogin } from 'react-google-login';
 import { useForm } from 'react-hook-form';
 
-export default function Login(props: { onSubmit: (ILoginForm) => void, onGoogleLogin: (any) => void, onFacebookLogin: (any) => void }) {
+export default function Login(props: { googleClientId: string, facebookClientId: string, onSubmit: (ILoginForm) => void, onGoogleLogin: (any) => void, onFacebookLogin: (any) => void }) {
   const { register, handleSubmit } = useForm<ILoginForm>()
   const onSubmit = (data) => {
     if (props.onSubmit)
@@ -16,6 +16,7 @@ export default function Login(props: { onSubmit: (ILoginForm) => void, onGoogleL
   return (
     <div className={style.container}>
       <div className={style.form}>
+        {process.env.GOOGLE_CLIENT_ID}
         <h1>Login</h1>
         <form onSubmit={handleSubmit(onSubmit)} >
           <input required type="text" placeholder="username" ref={register} name="username" />
@@ -29,7 +30,7 @@ export default function Login(props: { onSubmit: (ILoginForm) => void, onGoogleL
           </div>
         </form>
         <FacebookLogin
-          appId={process.env.FACEBOOK_CLIENT_ID}
+          appId={props.facebookClientId}
           fields="name,email,picture"
           callback={(response) => {
             props.onFacebookLogin(response)
@@ -45,7 +46,7 @@ export default function Login(props: { onSubmit: (ILoginForm) => void, onGoogleL
           )}
         />
         <GoogleLogin
-          clientId={process.env.GOOGLE_CLIENT_ID}
+          clientId={props.googleClientId}
           render={renderProps => (
             <div onClick={(e) => {
               e.preventDefault()
