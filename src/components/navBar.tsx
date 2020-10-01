@@ -8,7 +8,9 @@ export default function NavBar() {
         <Link href='/' shallow>
           <span>Home</span>
         </Link>
-        <span>Feed</span>
+        <Link href='feed' shallow>
+          <span>Feed</span>
+        </Link>
         <Link href='wishlist' shallow>
           <span>Cart</span>
         </Link>

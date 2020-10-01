@@ -10,7 +10,7 @@ export default function Product({ product, onClickFavorite }: { product: IProduc
       <div className={style.image}>
         <Link href={`/detail/${product.id}`} shallow>
           <div>
-            <img src={product.imageUrl} alt={product.imageUrl} />
+            <img src={product.imageUrl} alt={product.imageUrl} loading="lazy" />
           </div>
         </Link>
         <div onClick={() => { onClickFavorite(product.id) }}>
@@ -30,7 +30,7 @@ export function MiniProduct(props: IProductPromo) {
   return (
     <Link href={`/detail/${props.id}`} shallow>
       <div className={style.miniContainer}>
-        <img src={props.imageUrl} alt={props.imageUrl} />
+        <img src={props.imageUrl} alt={props.imageUrl} loading="lazy" />
         <div>
           <span>{props.title}</span>
           <span>{props.price}</span>
@@ -58,7 +58,7 @@ export function DetailProduct({ product, onClick, onClickFavorite }: { onClickFa
             </div>
           </Link>
         </div>
-        <img src={product.imageUrl} alt={product.imageUrl} />
+        <img src={product.imageUrl} alt={product.imageUrl} loading="lazy" />
       </div>
       <div className={style.body}>
         <div className={style.title}>

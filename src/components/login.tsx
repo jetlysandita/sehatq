@@ -19,7 +19,9 @@ export default function Login(props: { googleClientId: string, facebookClientId:
         {process.env.GOOGLE_CLIENT_ID}
         <h1>Login</h1>
         <form onSubmit={handleSubmit(onSubmit)} >
+          <label>username</label>
           <input required type="text" placeholder="username" ref={register} name="username" />
+          <label>password</label>
           <input autoComplete="****" required type="password" placeholder="password" ref={register} name="password" />
           <div className={style.bottom}>
             <div className={style.checkbox}>

@@ -3,7 +3,6 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import Category from "../src/components/category";
 import Product from "../src/components/product";
 import NavBar from "../src/components/navBar";
-import { GetServerSideProps } from 'next'
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useRef } from "react";
@@ -11,7 +10,9 @@ import { UPDATE_PRODUCT, CHANGE_FAVORITE } from "../redux/actions/productActions
 import HeaderWithIcon from "../src/components/headerWithIcon";
 import useGuard from "../src/hooks/useGuard";
 import Layout from "../src/layout/general";
+import Head from "next/head";
 
+export const config = { amp: 'hybrid' }
 export default function Index(props) {
   useGuard()
   const dispatch = useDispatch()
@@ -25,8 +26,13 @@ export default function Index(props) {
   const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
   const topRef = useRef(null)
   const scrollToTop = () => scrollToRef(topRef)
+
   return (
     <Layout>
+      <Head>
+        <script async src="https://cdn.ampproject.org/v0.js" />
+
+      </Head>
       <div ref={topRef}></div>
       <HeaderWithIcon icon={faHeart}>
         <Link shallow href="/search">
@@ -42,6 +48,8 @@ export default function Index(props) {
           })
         }
       </div>
+      <h1>Promo
+      </h1>
       <div>
         {
           product.length > 0 && product.map(item => {
@@ -60,7 +68,7 @@ export default function Index(props) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps = async () => {
   const res = await fetch('https://private-4639ce-ecommerce56.apiary-mock.com/home')
   const dataJson = await res.json()
 

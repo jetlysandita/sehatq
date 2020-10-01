@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux'
 import HeaderWithIcon from '../src/components/headerWithIcon'
 import { MiniProduct } from '../src/components/product'
 import useGuard from '../src/hooks/useGuard'
+import Layout from '../src/layout/general'
 
 export default function History() {
   useGuard()
@@ -10,7 +11,7 @@ export default function History() {
   }))
 
   return (
-    <>
+    <Layout>
       <HeaderWithIcon>
         <h1>Wishlist</h1>
       </HeaderWithIcon>
@@ -21,6 +22,6 @@ export default function History() {
           })
         }
       </div>
-    </>
+    </Layout>
   )
 }
