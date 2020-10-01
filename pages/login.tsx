@@ -10,7 +10,7 @@ export default function Login(props) {
   return (
     <Layout>
       <CustomLogin
-        googleClientId={props.googleClientid}
+        googleClientId={props.googleClientId}
         facebookClientId={props.facebookClientId}
         onSubmit={(data) => {
           localStorage.token = 'normal'
