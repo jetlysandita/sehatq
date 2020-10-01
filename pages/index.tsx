@@ -18,10 +18,12 @@ export default function Index(props) {
   const dispatch = useDispatch()
   const product = useSelector(state => state.product)
   useEffect(() => {
-    dispatch({
-      type: UPDATE_PRODUCT,
-      data: props.product
-    })
+    if (product.length <= 0) {
+      dispatch({
+        type: UPDATE_PRODUCT,
+        data: props.product
+      })
+    }
   }, [])
   const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
   const topRef = useRef(null)
