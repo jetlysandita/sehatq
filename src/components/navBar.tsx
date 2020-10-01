@@ -8,13 +8,13 @@ export default function NavBar() {
         <Link href='/' shallow>
           <span>Home</span>
         </Link>
-        <Link href='feed' shallow>
+        <Link href='/feed' shallow>
           <span>Feed</span>
         </Link>
-        <Link href='wishlist' shallow>
+        <Link href='/wishlist' shallow>
           <span>Cart</span>
         </Link>
-        <Link href='history' shallow>
+        <Link href='/history' shallow>
           <span>Profile</span>
         </Link>
       </div>

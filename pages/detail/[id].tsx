@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next'
 import { useSelector, useDispatch } from 'react-redux'
 import { DetailProduct } from '../../src/components/product'
 import { ADD_HISTORY } from '../../redux/actions/history.Actions'
-import { CHANGE_FAVORITE } from '../../redux/actions/productActions'
+import { CHANGE_FAVORITE, UPDATE_PRODUCT } from '../../redux/actions/productActions'
 import useGuard from '../../src/hooks/useGuard'
 import Layout from '../../src/layout/general'
 import Swal from 'sweetalert2'
@@ -17,6 +17,7 @@ export default function Detail(props) {
     })
     return result
   })
+
   const clickBuy = (product) => {
     dispatch({ type: ADD_HISTORY, data: product })
     Swal.fire({
@@ -30,7 +31,6 @@ export default function Detail(props) {
   const dispatch = useDispatch()
   return (
     <Layout>
-
       {product && < DetailProduct product={product} onClick={(product) => clickBuy(product)} onClickFavorite={(id) => {
         dispatch({
           type: CHANGE_FAVORITE,

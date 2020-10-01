@@ -1,21 +1,19 @@
-import SearchBar from "../../src/components/searchBar";
+import SearchBar from "../src/components/searchBar";
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { MiniProduct as Product } from "../../src/components/product";
+import { MiniProduct as Product } from "../src/components/product";
 import { GetServerSideProps } from 'next'
 import { useState, useEffect } from "react";
 import Link from 'next/link'
-import useGuard from "../../src/hooks/useGuard";
-import Layout from "../../src/layout/general";
+import useGuard from "../src/hooks/useGuard";
+import Layout from "../src/layout/general";
 export default function Search(props) {
   useGuard()
   const [productFilter, setProductFilter] = useState([])
-  useEffect(() => {
-    setProductFilter(props.product)
-  }, [])
+
   const filterProduct = (value: string) => {
     if (!value) {
-      setProductFilter(props.product)
+      setProductFilter([])
     } else {
       setProductFilter(props.product.filter((item: IProductPromo) => {
         return item.title.toLowerCase().includes(value.toLowerCase())
@@ -24,7 +22,6 @@ export default function Search(props) {
   }
   return (
     <Layout>
-
       <div style={{ display: "flex", width: "100%", padding: "20px 20px" }}>
         <Link href="/" shallow>
           <div>
@@ -44,7 +41,7 @@ export default function Search(props) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
 
   const res = await fetch('https://private-4639ce-ecommerce56.apiary-mock.com/home')
   const dataJson = await res.json()

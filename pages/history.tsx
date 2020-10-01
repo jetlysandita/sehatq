@@ -5,7 +5,7 @@ import useGuard from '../src/hooks/useGuard'
 import Layout from '../src/layout/general'
 import Head from 'next/head'
 
-export const config = { amp: 'true' }
+export const config = { amp: 'hybrid' }
 export default function History() {
   useGuard()
   const history = useSelector(state => state.history)

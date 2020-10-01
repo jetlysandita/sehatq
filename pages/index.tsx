@@ -31,10 +31,6 @@ export default function Index(props) {
 
   return (
     <Layout>
-      <Head>
-        <script async src="https://cdn.ampproject.org/v0.js" />
-
-      </Head>
       <div ref={topRef}></div>
       <HeaderWithIcon icon={faHeart}>
         <Link shallow href="/search">
