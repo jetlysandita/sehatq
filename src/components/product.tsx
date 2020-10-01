@@ -3,6 +3,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faArrowLeft, faShareAlt, faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
+import { WhatsappShareButton } from 'react-share'
 export default function Product({ product, onClickFavorite }: { product: IProductPromo, onClickFavorite: (id: string) => void }) {
   return (
     <div className={style.container}>
@@ -51,7 +52,9 @@ export function DetailProduct({ product, onClick, onClickFavorite }: { onClickFa
           </Link>
           <Link href="/" shallow>
             <div>
-              <FontAwesomeIcon icon={faShareAlt} size="2x" style={{ marginRight: "10px" }} />
+              <WhatsappShareButton url="/">
+                <FontAwesomeIcon icon={faShareAlt} size="2x" style={{ marginRight: "10px" }} />
+              </WhatsappShareButton>
             </div>
           </Link>
         </div>

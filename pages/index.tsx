@@ -48,7 +48,7 @@ export default function Index(props) {
             return <Product product={item} key={item.id} onClickFavorite={(id) => {
               dispatch({
                 type: CHANGE_FAVORITE,
-                data: { id }
+                id
               })
             }} />
           })

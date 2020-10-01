@@ -29,7 +29,7 @@ export default function Login(props: { onSubmit: (ILoginForm) => void, onGoogleL
           </div>
         </form>
         <FacebookLogin
-          appId={process.env.facebookClientId}
+          appId={process.env.FACEBOOK_CLIENT_ID}
           fields="name,email,picture"
           callback={(response) => {
             props.onFacebookLogin(response)
@@ -45,7 +45,7 @@ export default function Login(props: { onSubmit: (ILoginForm) => void, onGoogleL
           )}
         />
         <GoogleLogin
-          clientId={process.env.googleClientId}
+          clientId={process.env.GOOGLE_CLIENT_ID}
           render={renderProps => (
             <div onClick={(e) => {
               e.preventDefault()

@@ -5,7 +5,9 @@ export default function NavBar() {
     <>
       <div style={{ marginTop: "60px" }}></div>
       <div className={style.container}>
-        <span>Home</span>
+        <Link href='/' shallow>
+          <span>Home</span>
+        </Link>
         <span>Feed</span>
         <Link href='wishlist' shallow>
           <span>Cart</span>

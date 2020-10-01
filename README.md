@@ -4,8 +4,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 create next config js
 module.exports = {
   env: {
-    googleClientId: '',
-    facebookClientId: ''
+    GOOGLE_CLIENT_ID: '',
+    FACEBOOK_CLIENT_ID: ''
   },
 }
 First, run the development server:
